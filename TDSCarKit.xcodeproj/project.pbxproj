@@ -7,112 +7,114 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07EF8DD12434049F891934CC /* App/LocalWebDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7703D9C81EB76F3EB54B3346 /* App/LocalWebDisplay.swift */; };
+		08372A6889FA534DBA21968A /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F318F2887324E3221684BE /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift */; };
 		0EC86F455714F97754ED72C4 /* App/H264Surface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DB484630DAD05A9DD9EA6F /* App/H264Surface.swift */; };
-		1039B85AC0C3F1EA9BF1D8F9 /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9381DB1A03F8E545A9E68C7A /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift */; };
+		126D439CD3046DC754086477 /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E496F6FDD084D2475F032 /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift */; };
+		1295C99B088FC4C77ECE56E0 /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223EEAD835A8EB0DEE6C9168 /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift */; };
 		131430C6B0DCC43DDBA29FCD /* App/MediaSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F56AF5C64640432F486F25 /* App/MediaSockets.swift */; };
-		13CC91453E7E279762270289 /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED3AD51EDB2E9383A24C2A5 /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift */; };
-		24A15689B5F2F707E6791971 /* Sources/TDSCarKitCore/Binary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE4E95DE29AF8F5F684FC2F /* Sources/TDSCarKitCore/Binary.swift */; };
-		262871ACB5642F782D560F7F /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F75EB285D7A8897999A127 /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift */; };
+		151D8C6D40F3D169A422259D /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF58C9479E75E06BDA321A90 /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift */; };
+		1A16CCC1EEFACD02C5B1BE4D /* App/WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF444C00EEF0183938A3E65B /* App/WelcomeViewController.swift */; };
+		1ABCA4796D5819B1F07F73A7 /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A463F1790232D91FE430CB66 /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift */; };
+		1DFBB42814BEF5C2E09CA0E0 /* Sources/TDSCarKitCore/PairSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22621929CC1224A7E38CB420 /* Sources/TDSCarKitCore/PairSetup.swift */; };
+		1FA15643DDFDBF502F4427D4 /* Sources/TDSCarKitCore/ScreenStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B40B47C25CC3D6FEBC90E8D /* Sources/TDSCarKitCore/ScreenStream.swift */; };
+		25C6A5EDB9C7A8CB59B0E58B /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826A5AE3BFE61047AD29D186 /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift */; };
+		2AD4CB8F61CAF801CA8F8E0A /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C22523C685FF3D5D1E5DEBD /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift */; };
 		317280AA587980E347998259 /* App/SameDeviceProbe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16358245C1D6E4C9ECD5FA /* App/SameDeviceProbe.swift */; };
+		347D0B4563E800C4844F2942 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664C31BA46CF1D5E3B64D435 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift */; };
+		391CDD8430BE8B39EC436A3D /* Sources/TDSCarKitCore/RTSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15547F7887F6D8488371E6 /* Sources/TDSCarKitCore/RTSP.swift */; };
+		3E458D48F80DE06C2AB85CEC /* Sources/TDSCarKitCore/IAP2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6016C51C4785796B4E10AE /* Sources/TDSCarKitCore/IAP2.swift */; };
 		43112985E0A8F7FAAB956A9E /* App/ReceiverConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354FC70B8CB0A837B12B807B /* App/ReceiverConfiguration.swift */; };
-		451C3C0CF6A229D7EED3194E /* Sources/TDSCarKitCore/OPACK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878C016604CC10B5FB5ECD8B /* Sources/TDSCarKitCore/OPACK.swift */; };
-		45A5756AAFE8D3525715DB02 /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = F726A65F45AF199AB43C5211 /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift */; };
-		4ABA5144D066E3102E35DA18 /* Sources/TDSCarKitCore/AudioStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E26D66891B0FBE565CA35D1 /* Sources/TDSCarKitCore/AudioStream.swift */; };
+		479AAD320AD81938B54B772C /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AC7DC45475145DBFE5D529 /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift */; };
+		479C9B20E12A51FB78B1E04E /* Sources/TDSCarKitCore/AnnexB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5C1FCAA17FA67FE2BE494F /* Sources/TDSCarKitCore/AnnexB.swift */; };
+		4AD9E5E0E2567117436435D1 /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF752662F5CAF2EA82D4BA88 /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift */; };
+		4CE616E30E7A07ADE97D630E /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EA498A0CBD1F760370C8D4 /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift */; };
 		4EC2B9A0957C0C7BA4C4D577 /* App/CarPlayControlBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14BC9A1582FB7301EBA4EEC /* App/CarPlayControlBrowser.swift */; };
-		54DD2DA2C1A30C8493B48D46 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A07DA9967C8458D728AC586 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift */; };
-		59698D20036B39B5BEE314FE /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift in Sources */ = {isa = PBXBuildFile; fileRef = E661249A94C046F9891E114F /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift */; };
-		6AE9AA281CEF3A70B5513785 /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B503ABE104E93ED984C3E16 /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift */; };
-		7280E6D2A3CAA1786B23A020 /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB86FB559E24F8FB77CEB0C /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift */; };
+		4FC96E6A3FE1F6C1864D8385 /* Sources/TDSCarKitCore/AccessoryMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B44E63C988BDC4F5B5026B9 /* Sources/TDSCarKitCore/AccessoryMessages.swift */; };
+		64FA68787E3FF96C50ADFECA /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E81123FE07B05287A2894B /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift */; };
+		6C481DFFDB041100E5D7964C /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47EA3482803B5D87BFD2E97 /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift */; };
 		75A29E53D8539252B3301E6E /* App/AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17EB8379178EF804B1C9770 /* App/AppDelegate.swift */; };
-		794521C8CED59B035ABCCC7C /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2890B6A8DF0519B92C2D9EFA /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift */; };
-		7A8A1FB0332CFF208DADE7D3 /* Sources/TDSCarKitCore/RTSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005ED4E0A19945F555BFA56E /* Sources/TDSCarKitCore/RTSP.swift */; };
-		7FD40659FC7A49ACDD1DE35E /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c in Sources */ = {isa = PBXBuildFile; fileRef = FEB6265A3FB950679A3B4841 /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c */; };
+		7E55F26578D4D1E0C0C2E163 /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37FA0EF48A970C0777A23F /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift */; };
 		82A602F72884956279B3793B /* App/AirPlayCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88EE41E90E802F76407F8E4E /* App/AirPlayCredentials.swift */; };
-		833464EA77819A148AFD0712 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5719D30F55870288C0A11ED5 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift */; };
-		96464255CF8872AB2E77C476 /* Identity in Resources */ = {isa = PBXBuildFile; fileRef = 1DB089A9F84E14E95F11DCB5 /* Identity */; };
+		8799F5BE9E3195879D0DFBF6 /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29CE20CF3401A92EB17FE18 /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift */; };
+		8966B13A60366EE2C1E71807 /* Sources/TDSCarKitCore/AccessoryIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEC945B188F585D6BE0F4D2 /* Sources/TDSCarKitCore/AccessoryIdentity.swift */; };
+		8B08C56FB6991764C6574839 /* Sources/TDSCarKitCore/AudioStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD01B522CF927B62CC738785 /* Sources/TDSCarKitCore/AudioStream.swift */; };
+		91D70C6A0CBCCD71F54D3D1E /* Sources/TDSCarKitCore/BLEFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C6E806A6C11F650900F11C /* Sources/TDSCarKitCore/BLEFrame.swift */; };
+		928C639A0266F05A55F99737 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C09502D8BCE582091447F6 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift */; };
 		9AA8500AA5EED0F288E24FE1 /* App/BLEBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC063C47C1B6FBDC0FB3C93 /* App/BLEBootstrap.swift */; };
-		9AF5D979E7B12194643944A8 /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F07457529665BF71BCFB327 /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift */; };
-		9F528AAABF9E48D65C365D00 /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F46F5A37158CC505921FCE /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift */; };
-		9FBA43FDA4A38A44D7B5DC03 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE762103B75127055BD6BD1 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift */; };
-		AA44131B46E53C9BAAC17F48 /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50D3F8E0D87A14484951965 /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift */; };
-		AE210390E419E94EB059677A /* Sources/TDSCarKitCore/ScreenStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656E4007D770D70EA2E37AD1 /* Sources/TDSCarKitCore/ScreenStream.swift */; };
-		B067570D591F8B6E182636DA /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38E16B95071DA39E6C126EF /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift */; };
-		B6EB8A32801006014940AF9E /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9298948340B2B2E36A8B9C36 /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift */; };
-		B74097991374ED81AB0FF8CC /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122CAE53A512C5467BDE3AD /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift */; };
+		A18B9DFB86043150E2D85A29 /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A757D2EA9A7DF7472DF8C55E /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift */; };
+		A9DDBA2899C281474474D15B /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c in Sources */ = {isa = PBXBuildFile; fileRef = D3F8C56D7B6DEA9C9CA53610 /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c */; };
+		AE59D2900DA2CF5DD6213423 /* Sources/TDSCarKitCore/OPACK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C19D1AF920BB7BB9DDAB5C5 /* Sources/TDSCarKitCore/OPACK.swift */; };
+		AF83C12E670EB2652F3304DB /* Sources/TDSCarKitCore/MFiSAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45AC415A1D962848010FAC1 /* Sources/TDSCarKitCore/MFiSAP.swift */; };
 		BE27C1336410F70E90F0F8CE /* App/NativeReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1B2651E00E520C5660692 /* App/NativeReceiver.swift */; };
-		C3354CBD38CDD6F2BFC89CF1 /* Sources/TDSCarKitCore/IAP2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DA322C181E2E13DA8363F /* Sources/TDSCarKitCore/IAP2.swift */; };
-		CB43F80AF00958DA2E648775 /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6792310CA275543475689 /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift */; };
-		CE0A6A7BA7DC1FE298BE2BE4 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272934ED0B7E5D7F939822D2 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift */; };
-		CE6F7FD16C5EFB9CAC41A57A /* Sources/TDSCarKitCore/MFiSAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DA1271094EF6626DC84C3 /* Sources/TDSCarKitCore/MFiSAP.swift */; };
-		D1DCB2AC05B3869141AF1FA8 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B010013E2A834964061377 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift */; };
-		D20A2F857227B3C7D1EC205F /* Sources/TDSCarKitCore/PairSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAFF4FCFDEBDA11D5C018FC /* Sources/TDSCarKitCore/PairSetup.swift */; };
-		D2B96C679EDC35B418609C2D /* Sources/TDSCarKitCore/Pairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96819412428FF88C5E09358 /* Sources/TDSCarKitCore/Pairing.swift */; };
+		C0AF378DC6FD2A0BFCD12158 /* Sources/TDSCarKitCore/Pairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DF7D7BDBE0E190CA358F3 /* Sources/TDSCarKitCore/Pairing.swift */; };
+		C11216AB77BE4AAC26F428B4 /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6142600AECCA0915480B6338 /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift */; };
+		C5CE66648AB6FEA53FE840E5 /* Sources/TDSCarKitCore/Binary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF469AB54702446B6BF13AC /* Sources/TDSCarKitCore/Binary.swift */; };
+		D2727AB0337EE94879B53188 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A0375891B9144FB9714900 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift */; };
+		D30F0EE9C566C24C098AB772 /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E6C9F1887BA490821729AC /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift */; };
 		D3B8F6FD49FB4AC811675FEB /* App/CarPlayMediaSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E2A38BC8A7D4D0FB884AB6 /* App/CarPlayMediaSession.swift */; };
-		D6411BB84C7E822771CF9D04 /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EC6D164A4506EC05AC3FE1 /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift */; };
-		DFAB62DF97C911D5B314EC20 /* Sources/TDSCarKitCore/AccessoryMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E701C927D0E696B9CDC2477 /* Sources/TDSCarKitCore/AccessoryMessages.swift */; };
+		DB9C648BCA90C578F3191478 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C62FC291D945B322D112CB8 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift */; };
 		E01EB6CB915B5F55F78F8DB6 /* App/CarPlayInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53BD38A08293BBCCBC182639 /* App/CarPlayInfo.swift */; };
 		E30B5264FB459950C8F64D8F /* App/ReceiverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B70235FFE972F257D61E968 /* App/ReceiverViewController.swift */; };
-		E30FD3C2532D6852BBB03853 /* Sources/TDSCarKitCore/BLEFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8531A1754681DF650ED717 /* Sources/TDSCarKitCore/BLEFrame.swift */; };
-		E810B04A5917CF5997BA4E8D /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB457DEC28B8C53502C2CC /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift */; };
-		EA05257A63182B30AD88BDF5 /* Sources/TDSCarKitCore/AccessoryIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023BFA3D6C85014244EA71EA /* Sources/TDSCarKitCore/AccessoryIdentity.swift */; };
-		EE2B1903011E5622285F4D96 /* Sources/TDSCarKitCore/AnnexB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCDB68396E988831E68111F /* Sources/TDSCarKitCore/AnnexB.swift */; };
+		EC702A5026C375B5C001D904 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001061EDE9D1B1FF88C6E546 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift */; };
 		F18EC0E491B6E27F5FB2FFCA /* App/CarPlayAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A69A086EFDEE36CFCEF7B /* App/CarPlayAudio.swift */; };
 		FD04C6B75D83204140C4DEEA /* App/DirectAccessoryTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = 43A08A842E89C864862B3AB0 /* App/DirectAccessoryTransport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		005ED4E0A19945F555BFA56E /* Sources/TDSCarKitCore/RTSP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/RTSP.swift; sourceTree = "<group>"; };
-		023BFA3D6C85014244EA71EA /* Sources/TDSCarKitCore/AccessoryIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/AccessoryIdentity.swift; sourceTree = "<group>"; };
+		001061EDE9D1B1FF88C6E546 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift; sourceTree = "<group>"; };
 		07F56AF5C64640432F486F25 /* App/MediaSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/MediaSockets.swift; sourceTree = "<group>"; };
-		0A07DA9967C8458D728AC586 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift; sourceTree = "<group>"; };
+		0C62FC291D945B322D112CB8 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift; sourceTree = "<group>"; };
+		0D9E496F6FDD084D2475F032 /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift; sourceTree = "<group>"; };
+		0F5C1FCAA17FA67FE2BE494F /* Sources/TDSCarKitCore/AnnexB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/AnnexB.swift; sourceTree = "<group>"; };
 		0FC063C47C1B6FBDC0FB3C93 /* App/BLEBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/BLEBootstrap.swift; sourceTree = "<group>"; };
 		16E2A38BC8A7D4D0FB884AB6 /* App/CarPlayMediaSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/CarPlayMediaSession.swift; sourceTree = "<group>"; };
-		1CE762103B75127055BD6BD1 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift; sourceTree = "<group>"; };
-		1DB089A9F84E14E95F11DCB5 /* Identity */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Identity; path = .local/Identity; sourceTree = "<group>"; };
+		18C6E806A6C11F650900F11C /* Sources/TDSCarKitCore/BLEFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/BLEFrame.swift; sourceTree = "<group>"; };
+		1F6016C51C4785796B4E10AE /* Sources/TDSCarKitCore/IAP2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/IAP2.swift; sourceTree = "<group>"; };
 		20D1B2651E00E520C5660692 /* App/NativeReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/NativeReceiver.swift; sourceTree = "<group>"; };
-		272934ED0B7E5D7F939822D2 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift; sourceTree = "<group>"; };
-		2890B6A8DF0519B92C2D9EFA /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift"; sourceTree = "<group>"; };
-		29EC6D164A4506EC05AC3FE1 /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift"; sourceTree = "<group>"; };
-		2E701C927D0E696B9CDC2477 /* Sources/TDSCarKitCore/AccessoryMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/AccessoryMessages.swift; sourceTree = "<group>"; };
-		2FAFF4FCFDEBDA11D5C018FC /* Sources/TDSCarKitCore/PairSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/PairSetup.swift; sourceTree = "<group>"; };
-		3122CAE53A512C5467BDE3AD /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift; sourceTree = "<group>"; };
+		223EEAD835A8EB0DEE6C9168 /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift"; sourceTree = "<group>"; };
+		22621929CC1224A7E38CB420 /* Sources/TDSCarKitCore/PairSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/PairSetup.swift; sourceTree = "<group>"; };
+		2DEC945B188F585D6BE0F4D2 /* Sources/TDSCarKitCore/AccessoryIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/AccessoryIdentity.swift; sourceTree = "<group>"; };
 		354FC70B8CB0A837B12B807B /* App/ReceiverConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/ReceiverConfiguration.swift; sourceTree = "<group>"; };
 		38A007151ABE87CC01A5B6E9 /* TDSCarKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = TDSCarKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		38FB457DEC28B8C53502C2CC /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift"; sourceTree = "<group>"; };
+		3C7DF7D7BDBE0E190CA358F3 /* Sources/TDSCarKitCore/Pairing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Pairing.swift; sourceTree = "<group>"; };
 		43A08A842E89C864862B3AB0 /* App/DirectAccessoryTransport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = App/DirectAccessoryTransport.m; sourceTree = "<group>"; };
+		4B40B47C25CC3D6FEBC90E8D /* Sources/TDSCarKitCore/ScreenStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/ScreenStream.swift; sourceTree = "<group>"; };
 		4B70235FFE972F257D61E968 /* App/ReceiverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/ReceiverViewController.swift; sourceTree = "<group>"; };
-		4ED3AD51EDB2E9383A24C2A5 /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift"; sourceTree = "<group>"; };
+		4C15547F7887F6D8488371E6 /* Sources/TDSCarKitCore/RTSP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/RTSP.swift; sourceTree = "<group>"; };
+		51E6C9F1887BA490821729AC /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift"; sourceTree = "<group>"; };
 		53BD38A08293BBCCBC182639 /* App/CarPlayInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/CarPlayInfo.swift; sourceTree = "<group>"; };
-		5719D30F55870288C0A11ED5 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift; sourceTree = "<group>"; };
 		59DB484630DAD05A9DD9EA6F /* App/H264Surface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/H264Surface.swift; sourceTree = "<group>"; };
-		5B503ABE104E93ED984C3E16 /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift"; sourceTree = "<group>"; };
-		5FE4E95DE29AF8F5F684FC2F /* Sources/TDSCarKitCore/Binary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Binary.swift; sourceTree = "<group>"; };
-		62C6792310CA275543475689 /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift; sourceTree = "<group>"; };
-		656E4007D770D70EA2E37AD1 /* Sources/TDSCarKitCore/ScreenStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/ScreenStream.swift; sourceTree = "<group>"; };
+		5B44E63C988BDC4F5B5026B9 /* Sources/TDSCarKitCore/AccessoryMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/AccessoryMessages.swift; sourceTree = "<group>"; };
+		5C19D1AF920BB7BB9DDAB5C5 /* Sources/TDSCarKitCore/OPACK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/OPACK.swift; sourceTree = "<group>"; };
+		6142600AECCA0915480B6338 /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift; sourceTree = "<group>"; };
+		664C31BA46CF1D5E3B64D435 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift; sourceTree = "<group>"; };
 		6E16358245C1D6E4C9ECD5FA /* App/SameDeviceProbe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/SameDeviceProbe.swift; sourceTree = "<group>"; };
-		6E26D66891B0FBE565CA35D1 /* Sources/TDSCarKitCore/AudioStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/AudioStream.swift; sourceTree = "<group>"; };
-		70F46F5A37158CC505921FCE /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift; sourceTree = "<group>"; };
-		878C016604CC10B5FB5ECD8B /* Sources/TDSCarKitCore/OPACK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/OPACK.swift; sourceTree = "<group>"; };
+		75E81123FE07B05287A2894B /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift; sourceTree = "<group>"; };
+		7703D9C81EB76F3EB54B3346 /* App/LocalWebDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/LocalWebDisplay.swift; sourceTree = "<group>"; };
+		77EA498A0CBD1F760370C8D4 /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift"; sourceTree = "<group>"; };
+		7CF469AB54702446B6BF13AC /* Sources/TDSCarKitCore/Binary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Binary.swift; sourceTree = "<group>"; };
+		826A5AE3BFE61047AD29D186 /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift; sourceTree = "<group>"; };
 		88EE41E90E802F76407F8E4E /* App/AirPlayCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/AirPlayCredentials.swift; sourceTree = "<group>"; };
-		89B010013E2A834964061377 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift; sourceTree = "<group>"; };
-		8CB86FB559E24F8FB77CEB0C /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift"; sourceTree = "<group>"; };
-		8F07457529665BF71BCFB327 /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift; sourceTree = "<group>"; };
-		9298948340B2B2E36A8B9C36 /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift; sourceTree = "<group>"; };
-		9381DB1A03F8E545A9E68C7A /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift"; sourceTree = "<group>"; };
+		94C09502D8BCE582091447F6 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift; sourceTree = "<group>"; };
+		9C22523C685FF3D5D1E5DEBD /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift"; sourceTree = "<group>"; };
 		A14BC9A1582FB7301EBA4EEC /* App/CarPlayControlBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/CarPlayControlBrowser.swift; sourceTree = "<group>"; };
-		B71DA322C181E2E13DA8363F /* Sources/TDSCarKitCore/IAP2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/IAP2.swift; sourceTree = "<group>"; };
+		A2AC7DC45475145DBFE5D529 /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift; sourceTree = "<group>"; };
+		A463F1790232D91FE430CB66 /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift; sourceTree = "<group>"; };
+		A47EA3482803B5D87BFD2E97 /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Random.swift; sourceTree = "<group>"; };
+		A757D2EA9A7DF7472DF8C55E /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift; sourceTree = "<group>"; };
+		AF752662F5CAF2EA82D4BA88 /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift"; sourceTree = "<group>"; };
+		B1A0375891B9144FB9714900 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift; sourceTree = "<group>"; };
+		BC37FA0EF48A970C0777A23F /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift"; sourceTree = "<group>"; };
 		BF3A69A086EFDEE36CFCEF7B /* App/CarPlayAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/CarPlayAudio.swift; sourceTree = "<group>"; };
-		CFCDB68396E988831E68111F /* Sources/TDSCarKitCore/AnnexB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/AnnexB.swift; sourceTree = "<group>"; };
-		D38E16B95071DA39E6C126EF /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift; sourceTree = "<group>"; };
-		D50D3F8E0D87A14484951965 /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Random.swift; sourceTree = "<group>"; };
-		D77DA1271094EF6626DC84C3 /* Sources/TDSCarKitCore/MFiSAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/MFiSAP.swift; sourceTree = "<group>"; };
-		D96819412428FF88C5E09358 /* Sources/TDSCarKitCore/Pairing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Pairing.swift; sourceTree = "<group>"; };
-		E2F75EB285D7A8897999A127 /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift; sourceTree = "<group>"; };
-		E661249A94C046F9891E114F /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift"; sourceTree = "<group>"; };
+		C45AC415A1D962848010FAC1 /* Sources/TDSCarKitCore/MFiSAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/MFiSAP.swift; sourceTree = "<group>"; };
+		D29CE20CF3401A92EB17FE18 /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift"; sourceTree = "<group>"; };
+		D3F8C56D7B6DEA9C9CA53610 /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c; sourceTree = "<group>"; };
+		DF444C00EEF0183938A3E65B /* App/WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/WelcomeViewController.swift; sourceTree = "<group>"; };
+		E6F318F2887324E3221684BE /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift"; sourceTree = "<group>"; };
+		EF58C9479E75E06BDA321A90 /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Division.swift; sourceTree = "<group>"; };
 		F17EB8379178EF804B1C9770 /* App/AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App/AppDelegate.swift; sourceTree = "<group>"; };
-		F726A65F45AF199AB43C5211 /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/Vendor/BigInt/Division.swift; sourceTree = "<group>"; };
-		FA8531A1754681DF650ED717 /* Sources/TDSCarKitCore/BLEFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/BLEFrame.swift; sourceTree = "<group>"; };
-		FEB6265A3FB950679A3B4841 /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c; sourceTree = "<group>"; };
+		FD01B522CF927B62CC738785 /* Sources/TDSCarKitCore/AudioStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/TDSCarKitCore/AudioStream.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,48 +140,49 @@
 				16E2A38BC8A7D4D0FB884AB6 /* App/CarPlayMediaSession.swift */,
 				43A08A842E89C864862B3AB0 /* App/DirectAccessoryTransport.m */,
 				59DB484630DAD05A9DD9EA6F /* App/H264Surface.swift */,
+				7703D9C81EB76F3EB54B3346 /* App/LocalWebDisplay.swift */,
 				07F56AF5C64640432F486F25 /* App/MediaSockets.swift */,
 				20D1B2651E00E520C5660692 /* App/NativeReceiver.swift */,
 				354FC70B8CB0A837B12B807B /* App/ReceiverConfiguration.swift */,
 				4B70235FFE972F257D61E968 /* App/ReceiverViewController.swift */,
 				6E16358245C1D6E4C9ECD5FA /* App/SameDeviceProbe.swift */,
-				FEB6265A3FB950679A3B4841 /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c */,
-				023BFA3D6C85014244EA71EA /* Sources/TDSCarKitCore/AccessoryIdentity.swift */,
-				2E701C927D0E696B9CDC2477 /* Sources/TDSCarKitCore/AccessoryMessages.swift */,
-				CFCDB68396E988831E68111F /* Sources/TDSCarKitCore/AnnexB.swift */,
-				6E26D66891B0FBE565CA35D1 /* Sources/TDSCarKitCore/AudioStream.swift */,
-				FA8531A1754681DF650ED717 /* Sources/TDSCarKitCore/BLEFrame.swift */,
-				5FE4E95DE29AF8F5F684FC2F /* Sources/TDSCarKitCore/Binary.swift */,
-				B71DA322C181E2E13DA8363F /* Sources/TDSCarKitCore/IAP2.swift */,
-				D77DA1271094EF6626DC84C3 /* Sources/TDSCarKitCore/MFiSAP.swift */,
-				878C016604CC10B5FB5ECD8B /* Sources/TDSCarKitCore/OPACK.swift */,
-				2FAFF4FCFDEBDA11D5C018FC /* Sources/TDSCarKitCore/PairSetup.swift */,
-				D96819412428FF88C5E09358 /* Sources/TDSCarKitCore/Pairing.swift */,
-				005ED4E0A19945F555BFA56E /* Sources/TDSCarKitCore/RTSP.swift */,
-				656E4007D770D70EA2E37AD1 /* Sources/TDSCarKitCore/ScreenStream.swift */,
-				70F46F5A37158CC505921FCE /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift */,
-				272934ED0B7E5D7F939822D2 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift */,
-				0A07DA9967C8458D728AC586 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift */,
-				E661249A94C046F9891E114F /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift */,
-				3122CAE53A512C5467BDE3AD /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift */,
-				1CE762103B75127055BD6BD1 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift */,
-				8CB86FB559E24F8FB77CEB0C /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift */,
-				F726A65F45AF199AB43C5211 /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift */,
-				5719D30F55870288C0A11ED5 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift */,
-				4ED3AD51EDB2E9383A24C2A5 /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift */,
-				E2F75EB285D7A8897999A127 /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift */,
-				D38E16B95071DA39E6C126EF /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift */,
-				9381DB1A03F8E545A9E68C7A /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift */,
-				9298948340B2B2E36A8B9C36 /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift */,
-				2890B6A8DF0519B92C2D9EFA /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift */,
-				D50D3F8E0D87A14484951965 /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift */,
-				89B010013E2A834964061377 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift */,
-				29EC6D164A4506EC05AC3FE1 /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift */,
-				62C6792310CA275543475689 /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift */,
-				38FB457DEC28B8C53502C2CC /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift */,
-				8F07457529665BF71BCFB327 /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift */,
-				5B503ABE104E93ED984C3E16 /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift */,
-				1DB089A9F84E14E95F11DCB5 /* Identity */,
+				DF444C00EEF0183938A3E65B /* App/WelcomeViewController.swift */,
+				D3F8C56D7B6DEA9C9CA53610 /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c */,
+				2DEC945B188F585D6BE0F4D2 /* Sources/TDSCarKitCore/AccessoryIdentity.swift */,
+				5B44E63C988BDC4F5B5026B9 /* Sources/TDSCarKitCore/AccessoryMessages.swift */,
+				0F5C1FCAA17FA67FE2BE494F /* Sources/TDSCarKitCore/AnnexB.swift */,
+				FD01B522CF927B62CC738785 /* Sources/TDSCarKitCore/AudioStream.swift */,
+				18C6E806A6C11F650900F11C /* Sources/TDSCarKitCore/BLEFrame.swift */,
+				7CF469AB54702446B6BF13AC /* Sources/TDSCarKitCore/Binary.swift */,
+				1F6016C51C4785796B4E10AE /* Sources/TDSCarKitCore/IAP2.swift */,
+				C45AC415A1D962848010FAC1 /* Sources/TDSCarKitCore/MFiSAP.swift */,
+				5C19D1AF920BB7BB9DDAB5C5 /* Sources/TDSCarKitCore/OPACK.swift */,
+				22621929CC1224A7E38CB420 /* Sources/TDSCarKitCore/PairSetup.swift */,
+				3C7DF7D7BDBE0E190CA358F3 /* Sources/TDSCarKitCore/Pairing.swift */,
+				4C15547F7887F6D8488371E6 /* Sources/TDSCarKitCore/RTSP.swift */,
+				4B40B47C25CC3D6FEBC90E8D /* Sources/TDSCarKitCore/ScreenStream.swift */,
+				A463F1790232D91FE430CB66 /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift */,
+				94C09502D8BCE582091447F6 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift */,
+				0C62FC291D945B322D112CB8 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift */,
+				AF752662F5CAF2EA82D4BA88 /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift */,
+				75E81123FE07B05287A2894B /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift */,
+				B1A0375891B9144FB9714900 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift */,
+				223EEAD835A8EB0DEE6C9168 /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift */,
+				EF58C9479E75E06BDA321A90 /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift */,
+				664C31BA46CF1D5E3B64D435 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift */,
+				51E6C9F1887BA490821729AC /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift */,
+				0D9E496F6FDD084D2475F032 /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift */,
+				6142600AECCA0915480B6338 /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift */,
+				9C22523C685FF3D5D1E5DEBD /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift */,
+				A757D2EA9A7DF7472DF8C55E /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift */,
+				77EA498A0CBD1F760370C8D4 /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift */,
+				A47EA3482803B5D87BFD2E97 /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift */,
+				001061EDE9D1B1FF88C6E546 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift */,
+				E6F318F2887324E3221684BE /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift */,
+				A2AC7DC45475145DBFE5D529 /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift */,
+				D29CE20CF3401A92EB17FE18 /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift */,
+				826A5AE3BFE61047AD29D186 /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift */,
+				BC37FA0EF48A970C0777A23F /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift */,
 				FBDC4F23F93125BBEEAE800C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				BCE16DD0260827ECF338C787 /* Sources */,
 				7561BFB015D8F536760CB671 /* Frameworks */,
 				0189424A5A60FED329FA868E /* Resources */,
+				7BB17E7AEA15011326F307B7 /* Bundle local identity */,
 			);
 			buildRules = (
 			);
@@ -243,11 +247,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96464255CF8872AB2E77C476 /* Identity in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7BB17E7AEA15011326F307B7 /* Bundle local identity */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle local identity";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -eu\nidentity_dir=\"${TDS_IDENTITY_DIR:-}\"\nif [ -z \"$identity_dir\" ]; then\n  for candidate in \"$SRCROOT/.local/Identity\" \"$SRCROOT/../../NativeCarCast/.local/Identity\"; do\n    if [ -f \"$candidate/certificate.p7b\" ] && [ -f \"$candidate/leaf.cer\" ] && [ -f \"$candidate/private.x963\" ]; then identity_dir=\"$candidate\"; break; fi\n  done\nfi\nif [ -n \"$identity_dir\" ]; then\n  destination=\"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/Identity\"\n  mkdir -p \"$destination\"\n  for name in certificate.p7b leaf.cer private.x963; do\n    test -f \"$identity_dir/$name\"\n    cp \"$identity_dir/$name\" \"$destination/$name\"\n  done\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BCE16DD0260827ECF338C787 /* Sources */ = {
@@ -263,47 +283,49 @@
 				D3B8F6FD49FB4AC811675FEB /* App/CarPlayMediaSession.swift in Sources */,
 				FD04C6B75D83204140C4DEEA /* App/DirectAccessoryTransport.m in Sources */,
 				0EC86F455714F97754ED72C4 /* App/H264Surface.swift in Sources */,
+				07EF8DD12434049F891934CC /* App/LocalWebDisplay.swift in Sources */,
 				131430C6B0DCC43DDBA29FCD /* App/MediaSockets.swift in Sources */,
 				BE27C1336410F70E90F0F8CE /* App/NativeReceiver.swift in Sources */,
 				43112985E0A8F7FAAB956A9E /* App/ReceiverConfiguration.swift in Sources */,
 				E30B5264FB459950C8F64D8F /* App/ReceiverViewController.swift in Sources */,
 				317280AA587980E347998259 /* App/SameDeviceProbe.swift in Sources */,
-				7FD40659FC7A49ACDD1DE35E /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c in Sources */,
-				EA05257A63182B30AD88BDF5 /* Sources/TDSCarKitCore/AccessoryIdentity.swift in Sources */,
-				DFAB62DF97C911D5B314EC20 /* Sources/TDSCarKitCore/AccessoryMessages.swift in Sources */,
-				EE2B1903011E5622285F4D96 /* Sources/TDSCarKitCore/AnnexB.swift in Sources */,
-				4ABA5144D066E3102E35DA18 /* Sources/TDSCarKitCore/AudioStream.swift in Sources */,
-				E30FD3C2532D6852BBB03853 /* Sources/TDSCarKitCore/BLEFrame.swift in Sources */,
-				24A15689B5F2F707E6791971 /* Sources/TDSCarKitCore/Binary.swift in Sources */,
-				C3354CBD38CDD6F2BFC89CF1 /* Sources/TDSCarKitCore/IAP2.swift in Sources */,
-				CE6F7FD16C5EFB9CAC41A57A /* Sources/TDSCarKitCore/MFiSAP.swift in Sources */,
-				451C3C0CF6A229D7EED3194E /* Sources/TDSCarKitCore/OPACK.swift in Sources */,
-				D20A2F857227B3C7D1EC205F /* Sources/TDSCarKitCore/PairSetup.swift in Sources */,
-				D2B96C679EDC35B418609C2D /* Sources/TDSCarKitCore/Pairing.swift in Sources */,
-				7A8A1FB0332CFF208DADE7D3 /* Sources/TDSCarKitCore/RTSP.swift in Sources */,
-				AE210390E419E94EB059677A /* Sources/TDSCarKitCore/ScreenStream.swift in Sources */,
-				9F528AAABF9E48D65C365D00 /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift in Sources */,
-				CE0A6A7BA7DC1FE298BE2BE4 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift in Sources */,
-				54DD2DA2C1A30C8493B48D46 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift in Sources */,
-				59698D20036B39B5BEE314FE /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift in Sources */,
-				B74097991374ED81AB0FF8CC /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift in Sources */,
-				9FBA43FDA4A38A44D7B5DC03 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift in Sources */,
-				7280E6D2A3CAA1786B23A020 /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift in Sources */,
-				45A5756AAFE8D3525715DB02 /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift in Sources */,
-				833464EA77819A148AFD0712 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift in Sources */,
-				13CC91453E7E279762270289 /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift in Sources */,
-				262871ACB5642F782D560F7F /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift in Sources */,
-				B067570D591F8B6E182636DA /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift in Sources */,
-				1039B85AC0C3F1EA9BF1D8F9 /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift in Sources */,
-				B6EB8A32801006014940AF9E /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift in Sources */,
-				794521C8CED59B035ABCCC7C /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift in Sources */,
-				AA44131B46E53C9BAAC17F48 /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift in Sources */,
-				D1DCB2AC05B3869141AF1FA8 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift in Sources */,
-				D6411BB84C7E822771CF9D04 /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift in Sources */,
-				CB43F80AF00958DA2E648775 /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift in Sources */,
-				E810B04A5917CF5997BA4E8D /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift in Sources */,
-				9AF5D979E7B12194643944A8 /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift in Sources */,
-				6AE9AA281CEF3A70B5513785 /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift in Sources */,
+				1A16CCC1EEFACD02C5B1BE4D /* App/WelcomeViewController.swift in Sources */,
+				A9DDBA2899C281474474D15B /* Sources/CTDSCarKitCrypto/TDSCarKitCrypto.c in Sources */,
+				8966B13A60366EE2C1E71807 /* Sources/TDSCarKitCore/AccessoryIdentity.swift in Sources */,
+				4FC96E6A3FE1F6C1864D8385 /* Sources/TDSCarKitCore/AccessoryMessages.swift in Sources */,
+				479C9B20E12A51FB78B1E04E /* Sources/TDSCarKitCore/AnnexB.swift in Sources */,
+				8B08C56FB6991764C6574839 /* Sources/TDSCarKitCore/AudioStream.swift in Sources */,
+				91D70C6A0CBCCD71F54D3D1E /* Sources/TDSCarKitCore/BLEFrame.swift in Sources */,
+				C5CE66648AB6FEA53FE840E5 /* Sources/TDSCarKitCore/Binary.swift in Sources */,
+				3E458D48F80DE06C2AB85CEC /* Sources/TDSCarKitCore/IAP2.swift in Sources */,
+				AF83C12E670EB2652F3304DB /* Sources/TDSCarKitCore/MFiSAP.swift in Sources */,
+				AE59D2900DA2CF5DD6213423 /* Sources/TDSCarKitCore/OPACK.swift in Sources */,
+				1DFBB42814BEF5C2E09CA0E0 /* Sources/TDSCarKitCore/PairSetup.swift in Sources */,
+				C0AF378DC6FD2A0BFCD12158 /* Sources/TDSCarKitCore/Pairing.swift in Sources */,
+				391CDD8430BE8B39EC436A3D /* Sources/TDSCarKitCore/RTSP.swift in Sources */,
+				1FA15643DDFDBF502F4427D4 /* Sources/TDSCarKitCore/ScreenStream.swift in Sources */,
+				1ABCA4796D5819B1F07F73A7 /* Sources/TDSCarKitCore/Vendor/BigInt/Addition.swift in Sources */,
+				928C639A0266F05A55F99737 /* Sources/TDSCarKitCore/Vendor/BigInt/BigInt.swift in Sources */,
+				DB9C648BCA90C578F3191478 /* Sources/TDSCarKitCore/Vendor/BigInt/BigUInt.swift in Sources */,
+				4AD9E5E0E2567117436435D1 /* Sources/TDSCarKitCore/Vendor/BigInt/Bitwise Ops.swift in Sources */,
+				64FA68787E3FF96C50ADFECA /* Sources/TDSCarKitCore/Vendor/BigInt/Codable.swift in Sources */,
+				D2727AB0337EE94879B53188 /* Sources/TDSCarKitCore/Vendor/BigInt/Comparable.swift in Sources */,
+				1295C99B088FC4C77ECE56E0 /* Sources/TDSCarKitCore/Vendor/BigInt/Data Conversion.swift in Sources */,
+				151D8C6D40F3D169A422259D /* Sources/TDSCarKitCore/Vendor/BigInt/Division.swift in Sources */,
+				347D0B4563E800C4844F2942 /* Sources/TDSCarKitCore/Vendor/BigInt/Exponentiation.swift in Sources */,
+				D30F0EE9C566C24C098AB772 /* Sources/TDSCarKitCore/Vendor/BigInt/Floating Point Conversion.swift in Sources */,
+				126D439CD3046DC754086477 /* Sources/TDSCarKitCore/Vendor/BigInt/GCD.swift in Sources */,
+				C11216AB77BE4AAC26F428B4 /* Sources/TDSCarKitCore/Vendor/BigInt/Hashable.swift in Sources */,
+				2AD4CB8F61CAF801CA8F8E0A /* Sources/TDSCarKitCore/Vendor/BigInt/Integer Conversion.swift in Sources */,
+				A18B9DFB86043150E2D85A29 /* Sources/TDSCarKitCore/Vendor/BigInt/Multiplication.swift in Sources */,
+				4CE616E30E7A07ADE97D630E /* Sources/TDSCarKitCore/Vendor/BigInt/Prime Test.swift in Sources */,
+				6C481DFFDB041100E5D7964C /* Sources/TDSCarKitCore/Vendor/BigInt/Random.swift in Sources */,
+				EC702A5026C375B5C001D904 /* Sources/TDSCarKitCore/Vendor/BigInt/Shifts.swift in Sources */,
+				08372A6889FA534DBA21968A /* Sources/TDSCarKitCore/Vendor/BigInt/Square Root.swift in Sources */,
+				479AAD320AD81938B54B772C /* Sources/TDSCarKitCore/Vendor/BigInt/Strideable.swift in Sources */,
+				8799F5BE9E3195879D0DFBF6 /* Sources/TDSCarKitCore/Vendor/BigInt/String Conversion.swift in Sources */,
+				25C6A5EDB9C7A8CB59B0E58B /* Sources/TDSCarKitCore/Vendor/BigInt/Subtraction.swift in Sources */,
+				7E55F26578D4D1E0C0C2E163 /* Sources/TDSCarKitCore/Vendor/BigInt/Words and Bits.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,14 +337,14 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_STYLE = Automatic;
 				CODE_SIGN_ENTITLEMENTS = "$(TDS_WIFI_ENTITLEMENTS)";
-				TDS_WIFI_NAME_DETECTION = NO;
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_TEAM = K3S7UENN8E;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_DEBUG_DYLIB = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Sources/CTDSCarKitCrypto/include";
 				INFOPLIST_FILE = App/Info.plist;
@@ -332,17 +354,19 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				PRODUCT_BUNDLE_IDENTIFIER = local.tds.carkit;
+				PRODUCT_BUNDLE_IDENTIFIER = net.thomasdye.TDScarKit;
 				PRODUCT_NAME = TDSCarKit;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "App/TDSCarKit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TDS_WIFI_NAME_DETECTION = NO;
 			};
 			name = Release;
 		};
@@ -351,14 +375,14 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_STYLE = Automatic;
 				CODE_SIGN_ENTITLEMENTS = "$(TDS_WIFI_ENTITLEMENTS)";
-				TDS_WIFI_NAME_DETECTION = NO;
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_TEAM = K3S7UENN8E;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_DEBUG_DYLIB = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Sources/CTDSCarKitCrypto/include";
 				INFOPLIST_FILE = App/Info.plist;
@@ -368,17 +392,19 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				PRODUCT_BUNDLE_IDENTIFIER = local.tds.carkit;
+				PRODUCT_BUNDLE_IDENTIFIER = net.thomasdye.TDScarKit;
 				PRODUCT_NAME = TDSCarKit;
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "App/TDSCarKit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TDS_WIFI_NAME_DETECTION = NO;
 			};
 			name = Debug;
 		};

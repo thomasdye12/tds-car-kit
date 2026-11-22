@@ -77,6 +77,7 @@ final class CarPlayAudio {
     // Audio decoding never blocks the video/RTSP queue. All streams share this queue.
     private static var playingStreams = 0
     var onLog: ((String) -> Void)?
+    var onPCM: ((AVAudioPCMBuffer) -> Void)?
     init(queue: DispatchQueue, secret: SymmetricKey, peerAddress: String, connectionID: UInt64, format: ReceiverAudioFormat, microphonePort: UInt16? = nil) throws {
         self.queue = Self.renderQueue; self.connectionID = connectionID; self.format = format
         decoder = try NativeAudioDecoder(format: format)
@@ -102,6 +103,7 @@ final class CarPlayAudio {
             guard let buffer = try decoder.decode(packet.samples) else { return }
             let frames = Int(buffer.frameLength)
             guard queuedFrames + frames <= format.sampleRate * 2 else { overflowPackets += 1; return }
+            onPCM?(buffer)
             if !playing {
                 #if os(iOS)
                 let session = AVAudioSession.sharedInstance()

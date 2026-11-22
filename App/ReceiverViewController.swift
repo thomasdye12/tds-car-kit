@@ -4,6 +4,7 @@ import CoreLocation
 
 final class ReceiverViewController: UIViewController, CLLocationManagerDelegate {
     private let receiver = NativeReceiver()
+    private let webDisplay = LocalWebDisplay()
     private let bluetooth = BLEBootstrap()
     private let sameDevice = SameDeviceProbe()
     private let controlBrowser = CarPlayControlBrowser()
@@ -11,6 +12,11 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
     private let receiverPicker = UIButton(type: .system)
     private var remoteTarget: TDSCarKitReceiverBrowser.Target?
     private let modeControl = UISegmentedControl(items: ["Receive", "This iPhone", "Send to iPad"])
+    private var modeCards: [UIButton] = []
+    private let roleSection = UIStackView()
+    private let roleTitle = UILabel()
+    private let wifiWhy = UILabel()
+    private var presentedWelcome = false
     private var networkFields: [UIView] = []
     private let nameField = UITextField()
     private let ipField = UITextField()
@@ -19,6 +25,8 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
     private let channelField = UITextField()
     private let openNetworkSwitch = UISwitch()
     private let audioSwitch = UISwitch()
+    private let browserStandbySwitch = UISwitch()
+    private var browserRequestedSize: CGSize?
     private let driveControl = UISegmentedControl(items: ["Left-hand drive", "Right-hand drive"])
     private var driveRow: UIView!
     private let networkButton = UIButton(type: .system)
@@ -29,8 +37,12 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
     private var fetchingNetwork = false
     private var canDetectWiFiName: Bool { (Bundle.main.object(forInfoDictionaryKey: "TDSWiFiNameDetection") as? String) == "YES" }
     private var settingsStack: UIStackView!
-    private var settingsVisible = false
-    private let diagnosticsButton = UIButton(type: .system)
+    private var activeTab = 0
+    private let tabBar = UIView()
+    private var tabButtons: [UIButton] = []
+    private let displayScroll = UIScrollView()
+    private let setupScroll = UIScrollView()
+    private let activityScroll = UIScrollView()
     private var diagnosticsStack: UIStackView!
     private let orientationControl = UISegmentedControl(items: ["Landscape", "Portrait"])
     private var orientationRow: UIView!
@@ -42,6 +54,9 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
     private let explanation = UILabel()
     private let statusLabel = UILabel()
     private let connectionHelp = UILabel()
+    private let webAddress = UILabel()
+    private let copyWebAddressButton = UIButton(type: .system)
+    private var webURL: String?
     private let logView = UITextView()
     private let videoSurface = H264Surface()
     private let fullscreenButton = UIButton(type: .system)
@@ -62,6 +77,11 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !running { modeChanged() }
+        if !presentedWelcome, !UserDefaults.standard.bool(forKey: "hasSeenWelcomeV2"),
+           !ProcessInfo.processInfo.arguments.contains("--test-local-transport") {
+            presentedWelcome = true
+            showWelcome()
+        }
         #if DEBUG
         if !launchedTransportTest, ProcessInfo.processInfo.arguments.contains("--test-local-transport") {
             launchedTransportTest = true
@@ -74,8 +94,9 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         super.viewDidLoad()
         title = "TDS Car Kit"
         view.backgroundColor = .systemGroupedBackground
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: #selector(toggleSettings))
-        navigationItem.rightBarButtonItem?.accessibilityLabel = "Settings"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "questionmark.circle"), style: .plain,
+                                                           target: self, action: #selector(showWelcome))
+        navigationItem.leftBarButtonItem?.accessibilityLabel = "How TDS Car Kit works"
         locationManager.delegate = self
         heading.font = .preferredFont(forTextStyle: .largeTitle)
         heading.numberOfLines = 0
@@ -89,10 +110,8 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         ssidField.addTarget(self, action: #selector(networkNameChanged), for: .editingChanged)
         ssidField.addTarget(self, action: #selector(loadWiFiPassword), for: .editingDidEnd)
         channelField.text = String(UserDefaults.standard.object(forKey: "wifiChannel") as? Int ?? 36)
-        channelField.keyboardType = .numberPad
         networkFields = [field(nameField, title: "Receiver name"), field(ipField, title: "This device’s Wi-Fi IP address"),
-            field(ssidField, title: "Connected Wi-Fi network name"), field(passwordField, title: "Wi-Fi password"),
-            field(channelField, title: "Wi-Fi channel")]
+            field(ssidField, title: "Connected Wi-Fi network name"), field(passwordField, title: "Wi-Fi password")]
         let openLabel = UILabel(); openLabel.text = "Open network (no password)"; openLabel.font = .preferredFont(forTextStyle: .footnote)
         let openRow = UIStackView(arrangedSubviews: [openLabel, openNetworkSwitch]); openRow.spacing = 12
         networkFields.append(openRow)
@@ -100,13 +119,22 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         let audioLabel = UILabel(); audioLabel.text = "Play audio on this device"; audioLabel.font = .preferredFont(forTextStyle: .footnote)
         let audioRow = UIStackView(arrangedSubviews: [audioLabel, audioSwitch]); audioRow.spacing = 12
         networkFields.append(audioRow)
+        browserStandbySwitch.isOn = UserDefaults.standard.bool(forKey: "browserStandby")
+        browserStandbySwitch.addTarget(self, action: #selector(browserStandbyChanged), for: .valueChanged)
+        let standbyLabel = UILabel(); standbyLabel.text = "Keep browser link ready while app is open"
+        standbyLabel.font = .preferredFont(forTextStyle: .footnote); standbyLabel.numberOfLines = 0
+        let standbyRow = UIStackView(arrangedSubviews: [standbyLabel, browserStandbySwitch]); standbyRow.spacing = 12
+        let standbyHelp = UILabel(); standbyHelp.text = "Open the link in your car browser, then tap Connect CarPlay there. The browser chooses the display size before CarPlay starts."
+        standbyHelp.font = .preferredFont(forTextStyle: .footnote); standbyHelp.textColor = .secondaryLabel; standbyHelp.numberOfLines = 0
+        let browserStandbySection = UIStackView(arrangedSubviews: [standbyRow, standbyHelp])
+        browserStandbySection.axis = .vertical; browserStandbySection.spacing = 8
         let bluetoothLabel = UILabel(); bluetoothLabel.text = "Bluetooth setup (experimental)"; bluetoothLabel.font = .preferredFont(forTextStyle: .footnote)
         bluetoothSetupSwitch.addTarget(self, action: #selector(modeChanged), for: .valueChanged)
         bluetoothSetupRow = UIStackView(arrangedSubviews: [bluetoothLabel, bluetoothSetupSwitch])
         (bluetoothSetupRow as? UIStackView)?.spacing = 12
         let storedMode = UserDefaults.standard.object(forKey: "connectionMode") as? Int ?? 2
         modeControl.selectedSegmentIndex = UIDevice.current.userInterfaceIdiom == .phone ? min(2, max(0, storedMode)) : 0
-        modeControl.isHidden = UIDevice.current.userInterfaceIdiom == .pad
+        modeControl.isHidden = true
         modeControl.setEnabled(UIDevice.current.userInterfaceIdiom == .phone, forSegmentAt: 1)
         modeControl.setEnabled(UIDevice.current.userInterfaceIdiom == .phone, forSegmentAt: 2)
         if UIDevice.current.userInterfaceIdiom == .phone, UserDefaults.standard.bool(forKey: "sendToReceiver") {
@@ -115,14 +143,60 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         modeControl.addTarget(self, action: #selector(modeChanged), for: .valueChanged)
         connectionHelp.font = .preferredFont(forTextStyle: .body)
         connectionHelp.textColor = .secondaryLabel; connectionHelp.numberOfLines = 0
+        webAddress.font = .preferredFont(forTextStyle: .footnote)
+        webAddress.textColor = .secondaryLabel; webAddress.numberOfLines = 0
+        webAddress.isHidden = true
+        copyWebAddressButton.setTitle("Copy browser link", for: .normal)
+        copyWebAddressButton.addTarget(self, action: #selector(copyWebAddress), for: .touchUpInside)
+        copyWebAddressButton.isHidden = true
         receiverPicker.configuration = .bordered(); receiverPicker.showsMenuAsPrimaryAction = true
-        let stack = UIStackView(arrangedSubviews: [heading, explanation, statusLabel, connectionHelp, receiverPicker])
-        settingsStack = UIStackView(arrangedSubviews: [modeControl, bluetoothSetupRow!] + networkFields)
+        let stack = UIStackView(arrangedSubviews: [heading, explanation, statusLabel, connectionHelp, webAddress, copyWebAddressButton, receiverPicker])
+        roleTitle.text = "Choose where CarPlay appears"
+        roleTitle.font = .preferredFont(forTextStyle: .headline)
+        roleTitle.adjustsFontForContentSizeCategory = true
+        roleSection.axis = .vertical; roleSection.spacing = 10
+        roleSection.addArrangedSubview(roleTitle)
+        let choices: [(String, String, String)] = [
+            ("Display on this iPhone", "CarPlay stays on this phone. Share it with a car browser if you want a larger screen.", "iphone"),
+            ("Send to an iPad", "This phone sends CarPlay to an iPad running TDS Car Kit.", "ipad"),
+            ("Receive on this iPhone", "Use this iPhone as the screen for another iPhone.", "rectangle.on.rectangle")
+        ]
+        for (index, item) in [(1, choices[0]), (2, choices[1]), (0, choices[2])] {
+            let button = UIButton(type: .system)
+            var config = UIButton.Configuration.plain()
+            config.title = item.0; config.subtitle = item.1
+            config.image = UIImage(systemName: item.2)
+            config.imagePlacement = .leading; config.imagePadding = 14
+            config.titleAlignment = .leading
+            config.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+            button.configuration = config
+            button.contentHorizontalAlignment = .leading
+            button.layer.cornerRadius = 16
+            button.layer.borderWidth = 1.5
+            button.tag = index
+            button.addTarget(self, action: #selector(selectMode(_:)), for: .touchUpInside)
+            button.accessibilityLabel = "\(item.0). \(item.1)"
+            roleSection.addArrangedSubview(button)
+            modeCards.append(button)
+        }
+        let ipadRole = UILabel()
+        ipadRole.text = "This iPad is a CarPlay display. Start the display here, then connect from TDS Car Kit on your iPhone."
+        ipadRole.numberOfLines = 0
+        ipadRole.font = .preferredFont(forTextStyle: .body)
+        ipadRole.textColor = .secondaryLabel
+        ipadRole.adjustsFontForContentSizeCategory = true
+        roleSection.addArrangedSubview(ipadRole)
+        let isPad = UIDevice.current.userInterfaceIdiom == .pad
+        ipadRole.isHidden = !isPad
+        roleTitle.text = isPad ? "Ready to receive on this iPad" : "Choose where CarPlay appears"
+        modeCards.forEach { $0.isHidden = isPad }
+        stack.insertArrangedSubview(roleSection, at: 0)
+        settingsStack = UIStackView(arrangedSubviews: [bluetoothSetupRow!] + networkFields)
         settingsStack.axis = .vertical; settingsStack.spacing = 16
         settingsStack.isLayoutMarginsRelativeArrangement = true
         settingsStack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 16, bottom: 20, trailing: 16)
         settingsStack.backgroundColor = .secondarySystemGroupedBackground; settingsStack.layer.cornerRadius = 20
-        settingsStack.isHidden = true
+        if !isPad { settingsStack.addArrangedSubview(browserStandbySection) }
         driveControl.selectedSegmentIndex = (UserDefaults.standard.object(forKey: "rightHandDrive") as? Bool ?? true) ? 1 : 0
         driveControl.addTarget(self, action: #selector(driveChanged), for: .valueChanged)
         let driveLabel = UILabel(); driveLabel.text = "Driver’s seat"
@@ -147,10 +221,12 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         orientationRow = orientationStack; settingsStack.insertArrangedSubview(orientationStack, at: 2)
         passwordField.isSecureTextEntry = true
         ipField.keyboardType = .decimalPad
-        let note = UILabel(); note.numberOfLines = 0; note.font = .preferredFont(forTextStyle: .footnote); note.textColor = .secondaryLabel
-        note.text = "The Wi-Fi password is saved securely in this device’s Keychain when you start. It is never included in logs."
-        settingsStack.addArrangedSubview(note)
-        networkFields.append(note)
+        wifiWhy.numberOfLines = 0
+        wifiWhy.font = .preferredFont(forTextStyle: .subheadline)
+        wifiWhy.adjustsFontForContentSizeCategory = true
+        wifiWhy.textColor = .secondaryLabel
+        wifiWhy.text = "Why these Wi-Fi details? During CarPlay setup, this app gives iOS the network name and password for the connection. It does not join or create the network for you. The password stays in this device’s Keychain and can be removed below."
+        settingsStack.insertArrangedSubview(wifiWhy, at: 0)
         passwordStatus.font = .preferredFont(forTextStyle: .footnote); passwordStatus.numberOfLines = 0
         passwordStatus.textColor = .secondaryLabel
         forgetPasswordButton.setTitle("Forget saved Wi-Fi password", for: .normal)
@@ -161,7 +237,6 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         startButton.configuration?.cornerStyle = .large
         startButton.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 18, leading: 24, bottom: 18, trailing: 24)
         stack.addArrangedSubview(startButton)
-        stack.addArrangedSubview(settingsStack)
         videoSurface.isHidden = true
         videoHeight = videoSurface.heightAnchor.constraint(equalTo: videoSurface.widthAnchor, multiplier: displayAspectHeight)
         videoHeight.priority = .defaultLow
@@ -172,32 +247,92 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         fullscreenButton.isHidden = true; stack.addArrangedSubview(fullscreenButton)
         logView.isEditable = false; logView.font = .monospacedSystemFont(ofSize: 12, weight: .regular)
         logView.backgroundColor = .secondarySystemBackground; logView.layer.cornerRadius = 12
-        logView.heightAnchor.constraint(equalToConstant: 220).isActive = true
-        diagnosticsButton.setTitle("Show diagnostics", for: .normal)
-        diagnosticsButton.addTarget(self, action: #selector(toggleDiagnostics), for: .touchUpInside)
+        logView.heightAnchor.constraint(greaterThanOrEqualToConstant: 420).isActive = true
         let copyButton = UIButton(type: .system); copyButton.setTitle("Copy log", for: .normal)
         copyButton.addTarget(self, action: #selector(copyLog), for: .touchUpInside)
         diagnosticsStack = UIStackView(arrangedSubviews: [logView, copyButton]); diagnosticsStack.axis = .vertical; diagnosticsStack.spacing = 8
-        diagnosticsStack.isHidden = true
-        settingsStack.addArrangedSubview(diagnosticsButton); settingsStack.addArrangedSubview(diagnosticsStack)
-        stack.axis = .vertical; stack.spacing = 16; stack.translatesAutoresizingMaskIntoConstraints = false
-        let scroll = UIScrollView(); scroll.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(scroll); scroll.addSubview(stack)
-        let preferredWidth = stack.widthAnchor.constraint(equalTo: scroll.frameLayoutGuide.widthAnchor, constant: -48)
-        preferredWidth.priority = UILayoutPriority(999)
+        stack.axis = .vertical; stack.spacing = 16
+        let setupTitle = UILabel(); setupTitle.text = "Connection setup"; setupTitle.font = .preferredFont(forTextStyle: .largeTitle)
+        setupTitle.adjustsFontForContentSizeCategory = true
+        let setupIntro = UILabel(); setupIntro.text = "These settings apply to the role selected on the Display tab."
+        setupIntro.font = .preferredFont(forTextStyle: .body); setupIntro.textColor = .secondaryLabel; setupIntro.numberOfLines = 0
+        let setupContent = UIStackView(arrangedSubviews: [setupTitle, setupIntro, settingsStack])
+        setupContent.axis = .vertical; setupContent.spacing = 16
+        let activityTitle = UILabel(); activityTitle.text = "Connection activity"; activityTitle.font = .preferredFont(forTextStyle: .largeTitle)
+        activityTitle.adjustsFontForContentSizeCategory = true
+        let activityIntro = UILabel(); activityIntro.text = "Connection events and diagnostics appear here. Copy the log if you need help troubleshooting."
+        activityIntro.font = .preferredFont(forTextStyle: .body); activityIntro.textColor = .secondaryLabel; activityIntro.numberOfLines = 0
+        let activityContent = UIStackView(arrangedSubviews: [activityTitle, activityIntro, diagnosticsStack])
+        activityContent.axis = .vertical; activityContent.spacing = 16
+        tabBar.translatesAutoresizingMaskIntoConstraints = false
+        tabBar.backgroundColor = .secondarySystemGroupedBackground
+        view.addSubview(tabBar)
+        let tabItems = [("Display", "car.side"), ("Setup", "slider.horizontal.3"), ("Activity", "waveform.path")]
+        let tabStack = UIStackView()
+        tabStack.axis = .horizontal; tabStack.distribution = .fillEqually; tabStack.spacing = 8
+        tabStack.translatesAutoresizingMaskIntoConstraints = false
+        tabBar.addSubview(tabStack)
+        for (index, item) in tabItems.enumerated() {
+            let button = UIButton(type: .system)
+            var config = UIButton.Configuration.plain()
+            config.title = item.0; config.image = UIImage(systemName: item.1)
+            config.imagePlacement = .top; config.imagePadding = 3
+            config.titleAlignment = .center
+            config.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 4, bottom: 8, trailing: 4)
+            button.configuration = config
+            button.tag = index
+            button.layer.cornerRadius = 14
+            button.addTarget(self, action: #selector(selectTabButton(_:)), for: .touchUpInside)
+            button.accessibilityLabel = item.0
+            tabStack.addArrangedSubview(button)
+            tabButtons.append(button)
+        }
+        for (scroll, content) in [(displayScroll, stack), (setupScroll, setupContent), (activityScroll, activityContent)] {
+            scroll.translatesAutoresizingMaskIntoConstraints = false
+            content.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(scroll); scroll.addSubview(content)
+            let width = content.widthAnchor.constraint(equalTo: scroll.frameLayoutGuide.widthAnchor, constant: -48)
+            width.priority = UILayoutPriority(999)
+            NSLayoutConstraint.activate([
+                scroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+                scroll.bottomAnchor.constraint(equalTo: tabBar.topAnchor),
+                scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                content.topAnchor.constraint(equalTo: scroll.contentLayoutGuide.topAnchor, constant: 24),
+                content.bottomAnchor.constraint(equalTo: scroll.contentLayoutGuide.bottomAnchor, constant: -24),
+                content.centerXAnchor.constraint(equalTo: scroll.frameLayoutGuide.centerXAnchor),
+                width,
+                content.widthAnchor.constraint(lessThanOrEqualToConstant: 720)
+            ])
+        }
         NSLayoutConstraint.activate([
-            scroll.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scroll.leadingAnchor.constraint(equalTo: view.leadingAnchor), scroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stack.topAnchor.constraint(equalTo: scroll.contentLayoutGuide.topAnchor, constant: 24),
-            stack.bottomAnchor.constraint(equalTo: scroll.contentLayoutGuide.bottomAnchor, constant: -24),
-            stack.centerXAnchor.constraint(equalTo: scroll.frameLayoutGuide.centerXAnchor),
-            preferredWidth, stack.widthAnchor.constraint(lessThanOrEqualTo: scroll.frameLayoutGuide.widthAnchor, constant: -48),
-            stack.widthAnchor.constraint(lessThanOrEqualToConstant: 720)
+            tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tabBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tabStack.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: 8),
+            tabStack.leadingAnchor.constraint(equalTo: tabBar.leadingAnchor, constant: 20),
+            tabStack.trailingAnchor.constraint(equalTo: tabBar.trailingAnchor, constant: -20),
+            tabStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -4)
         ])
+        let keyboardBar = UIToolbar()
+        keyboardBar.items = [UIBarButtonItem(systemItem: .flexibleSpace),
+                             UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(dismissKeyboard))]
+        keyboardBar.sizeToFit()
+        for input in [nameField, ipField, ssidField, passwordField] {
+            input.inputAccessoryView = keyboardBar
+            input.returnKeyType = .done
+            input.addTarget(self, action: #selector(dismissKeyboard), for: .editingDidEndOnExit)
+        }
+        [displayScroll, setupScroll, activityScroll].forEach { $0.keyboardDismissMode = .interactive }
+        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        dismissTap.cancelsTouchesInView = false
+        setupScroll.addGestureRecognizer(dismissTap)
+        selectTab(0)
         receiver.onLog = { [weak self] in self?.log($0) }; bluetooth.onLog = { [weak self] in self?.log($0) }
         receiver.onControlConnected = { [weak self] in self?.sameDevice.didConnectControl() }
         receiver.onVideo = { [weak self] data in
             guard let self, self.running else { return }
+            self.webDisplay.receiveVideo(data)
             do {
                 try self.videoSurface.enqueue(accessUnit: data)
                 self.videoSurface.isHidden = false
@@ -210,6 +345,36 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
             } catch { self.log("Video display error: \(error)") }
         }
         videoSurface.onLog = { [weak self] in self?.log($0) }
+        receiver.onPCM = { [weak self] in self?.webDisplay.receiveAudio($0) }
+        webDisplay.onTouch = { [weak self] x, y, down in self?.receiver.touch(x: x, y: y, down: down) }
+        webDisplay.onLog = { [weak self] in self?.log($0) }
+        webDisplay.onReady = { [weak self] port in
+            guard let self else { return }
+            guard let address = ReceiverConfiguration.personalHotspotAddress() ?? ReceiverConfiguration.localIPv4Addresses().first else {
+                self.webAddress.text = "Connect this iPhone to Wi-Fi or enable Personal Hotspot to get a browser link."
+                self.webAddress.isHidden = false; self.copyWebAddressButton.isHidden = true; return
+            }
+            self.webURL = "http://\(address):\(port)/?pin=\(self.webDisplay.pin)"
+            self.webAddress.text = "Browser link: \(self.webURL!)\nOpen on the same Wi-Fi, then tap Connect CarPlay in the browser."
+            self.webAddress.isHidden = false
+            self.copyWebAddressButton.isHidden = false
+        }
+        webDisplay.onConnect = { [weak self] size in
+            guard let self else { return }
+            guard !self.running else {
+                self.webDisplay.setReceiverState("busy", message: "Stop the current connection in the iPhone app first.")
+                return
+            }
+            self.browserRequestedSize = size
+            self.log("Browser requested CarPlay viewport \(Int(size.width))×\(Int(size.height))")
+            self.modeControl.selectedSegmentIndex = 1
+            self.modeChanged()
+            self.toggleReceiver()
+            if !self.running {
+                self.browserRequestedSize = nil
+                self.webDisplay.setReceiverState("ready", message: self.statusLabel.text ?? "Check Setup on the iPhone.")
+            }
+        }
         videoSurface.onTouch = { [weak self] point, down in
             self?.receiver.touch(x: UInt16(clamping: Int(point.x)), y: UInt16(clamping: Int(point.y)), down: down)
         }
@@ -252,6 +417,7 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         loadIdentity()
         loadWiFiPassword()
         modeChanged()
+        if browserStandbySwitch.isOn { webDisplay.start() }
         #if targetEnvironment(macCatalyst)
         log("Running the native UIKit target on Mac Catalyst; no external receiver process")
         #elseif targetEnvironment(simulator)
@@ -280,18 +446,52 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         config.rightHandDrive = driveControl.selectedSegmentIndex == 1
         config.width = portrait ? Int((1280 / aspect / 16).rounded()) * 16 : 1280
         config.height = portrait ? 1280 : Int((1280 * aspect / 16).rounded()) * 16
+        if let requested = browserRequestedSize {
+            let scale = min(1, 1920 / requested.width, 1200 / requested.height)
+            config.width = max(320, Int((requested.width * scale / 16).rounded()) * 16)
+            config.height = max(240, Int((requested.height * scale / 16).rounded()) * 16)
+            videoHeight.isActive = false
+            videoHeight = videoSurface.heightAnchor.constraint(equalTo: videoSurface.widthAnchor,
+                                                               multiplier: CGFloat(config.height) / CGFloat(config.width))
+            videoHeight.priority = .defaultLow
+            videoHeight.isActive = true
+        }
     }
-    @objc private func toggleSettings() {
-        settingsVisible.toggle(); settingsStack.isHidden = !settingsVisible
-        navigationItem.rightBarButtonItem?.image = UIImage(systemName: settingsVisible ? "xmark" : "gearshape")
-        navigationItem.rightBarButtonItem?.accessibilityLabel = settingsVisible ? "Close settings" : "Settings"
-        if !settingsVisible { view.endEditing(true) }
+    @objc private func browserStandbyChanged() {
+        UserDefaults.standard.set(browserStandbySwitch.isOn, forKey: "browserStandby")
+        if browserStandbySwitch.isOn {
+            webDisplay.start()
+        } else if !running {
+            webDisplay.stop(); webURL = nil
+            webAddress.isHidden = true; copyWebAddressButton.isHidden = true
+        }
     }
-    private func revealSettings() { if !settingsVisible { toggleSettings() } }
-    @objc private func toggleDiagnostics() {
-        diagnosticsStack.isHidden.toggle()
-        diagnosticsButton.setTitle(diagnosticsStack.isHidden ? "Show diagnostics" : "Hide diagnostics", for: .normal)
-        if !diagnosticsStack.isHidden { logView.text = lines.joined(separator: "\n") }
+    private func selectTab(_ index: Int) {
+        view.endEditing(true)
+        activeTab = index
+        displayScroll.isHidden = index != 0
+        setupScroll.isHidden = index != 1
+        activityScroll.isHidden = index != 2
+        for button in tabButtons {
+            let selected = button.tag == index
+            button.tintColor = selected ? .systemBlue : .secondaryLabel
+            button.backgroundColor = selected ? UIColor.systemBlue.withAlphaComponent(0.12) : .clear
+            button.accessibilityTraits = selected ? [.button, .selected] : [.button]
+        }
+        if index == 2 { logView.text = lines.joined(separator: "\n") }
+    }
+    @objc private func selectTabButton(_ sender: UIButton) { selectTab(sender.tag) }
+    @objc private func dismissKeyboard() { view.endEditing(true) }
+    private func revealSettings() { selectTab(1) }
+    @objc private func selectMode(_ sender: UIButton) {
+        guard !running else { return }
+        modeControl.selectedSegmentIndex = sender.tag
+        modeChanged()
+    }
+    @objc private func showWelcome() {
+        let welcome = WelcomeViewController(isPad: UIDevice.current.userInterfaceIdiom == .pad)
+        welcome.onDone = { UserDefaults.standard.set(true, forKey: "hasSeenWelcomeV2") }
+        present(welcome, animated: true)
     }
     @objc private func driveChanged() {
         UserDefaults.standard.set(driveControl.selectedSegmentIndex == 1, forKey: "rightHandDrive")
@@ -440,9 +640,8 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         if !running, modeControl.selectedSegmentIndex != 2 {
             ipField.text = ReceiverConfiguration.personalHotspotAddress() ?? ReceiverConfiguration.localIPv4Addresses().first
         }
-        guard let channel = needsNetworkDetails ? UInt8(channelField.text ?? "") : UInt8(36), (1...196).contains(channel) else {
-            revealSettings(); statusLabel.text = "Enter a Wi-Fi channel between 1 and 196."; return
-        }
+        let savedChannel = UInt8(channelField.text ?? "") ?? 36
+        let channel: UInt8 = (1...196).contains(savedChannel) ? savedChannel : 36
         guard !needsNetworkDetails || openNetworkSwitch.isOn || !(passwordField.text ?? "").isEmpty else {
             statusLabel.text = "Enter the Wi-Fi password, or select Open network if it has no password."
             revealSettings(); passwordField.becomeFirstResponder(); return
@@ -463,6 +662,7 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
             receiverPicker.isEnabled = false; receiverBrowser.stop()
             UIApplication.shared.isIdleTimerDisabled = true
             startButton.setTitle("Stop iPad connection", for: .normal)
+            if browserStandbySwitch.isOn { webDisplay.setReceiverState("busy", message: "An iPad connection is active. Stop it in the iPhone app first.") }
             log("Requesting this iPhone’s CarPlay on \(target.name) at \(target.address):\(target.port)")
             sameDevice.start(configuration: config, identity: identity, expectsLocalControl: false)
             return
@@ -482,6 +682,9 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
             startButton.setTitle("Stop receiver", for: .normal)
             statusLabel.text = "Starting local CarPlay receiver…"
             UIApplication.shared.isIdleTimerDisabled = true
+            webDisplay.size = CGSize(width: config.width, height: config.height)
+            webDisplay.start()
+            webDisplay.setReceiverState("starting", message: "Waiting for CarPlay video from this iPhone…")
             receiver.onListening = { [weak self] port in
                 guard let self, self.running else { return }
                 var live = config; live.port = port
@@ -505,6 +708,9 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         view.endEditing(true)
         running = true; modeControl.isEnabled = false; setEditing(false); startButton.setTitle("Stop receiver", for: .normal)
         UIApplication.shared.isIdleTimerDisabled = true; statusLabel.text = "Starting native listener…"
+        webDisplay.size = CGSize(width: config.width, height: config.height)
+        webDisplay.start()
+        webDisplay.setReceiverState("starting", message: "Waiting for CarPlay video…")
         receiver.onListening = { [weak self] port in
             guard let self, self.running else { return }
             var live = config; live.port = port
@@ -516,7 +722,20 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
     private func stop() {
         hideFullscreen(); fullscreenButton.isHidden = true
         displayedVideo = false; videoSurface.reset(); videoSurface.isHidden = true
+        if browserRequestedSize != nil {
+            videoHeight.isActive = false
+            videoHeight = videoSurface.heightAnchor.constraint(equalTo: videoSurface.widthAnchor, multiplier: displayAspectHeight)
+            videoHeight.priority = .defaultLow
+            videoHeight.isActive = true
+        }
         running = false; receiver.onListening = nil; bluetooth.stop(); sameDevice.stop(); controlBrowser.stop(); receiver.stop()
+        browserRequestedSize = nil
+        webDisplay.resetStream()
+        if browserStandbySwitch.isOn {
+            webDisplay.setReceiverState("ready", message: "Tap Connect CarPlay to start.")
+        } else {
+            webDisplay.stop(); webAddress.isHidden = true; copyWebAddressButton.isHidden = true; webURL = nil
+        }
         receiverBrowser.stop()
         modeControl.isEnabled = true
         UIApplication.shared.isIdleTimerDisabled = false; setEditing(true)
@@ -528,6 +747,12 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         UserDefaults.standard.set(modeControl.selectedSegmentIndex, forKey: "connectionMode")
         let local = modeControl.selectedSegmentIndex == 1
         let remote = modeControl.selectedSegmentIndex == 2
+        for card in modeCards {
+            let selected = card.tag == modeControl.selectedSegmentIndex
+            card.backgroundColor = selected ? .systemBlue.withAlphaComponent(0.12) : .secondarySystemGroupedBackground
+            card.layer.borderColor = selected ? UIColor.systemBlue.cgColor : UIColor.separator.cgColor
+            card.accessibilityTraits = selected ? [.button, .selected] : [.button]
+        }
         receiverBrowser.stop(); remoteTarget = nil
         receiverPicker.isHidden = !remote
         if remote {
@@ -537,20 +762,21 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         }
         heading.text = remote ? "Connect to iPad" : local ? "CarPlay on this iPhone" : "Your CarPlay display"
         explanation.text = remote ? "Choose your iPad and send CarPlay to its screen."
-            : local ? "Display CarPlay on this device." : "Navigation, music and touch control from your iPhone."
+            : local ? "Display CarPlay here or in your car’s web browser." : "Navigation, music and touch control from your iPhone."
         connectionHelp.text = remote
             ? "Use the same Wi-Fi, or connect the iPad to this iPhone’s Personal Hotspot."
-            : local ? "Start CarPlay on this iPhone. Keep the app open while connected."
+            : local ? "Start CarPlay here, then open the browser link shown below on the same Wi-Fi. Keep this app open."
             : "Start the display here, then open TDS Car Kit on your iPhone to connect."
         driveRow.isHidden = remote
         hotspotNote.isHidden = !needsNetworkDetails
+        wifiWhy.isHidden = !needsNetworkDetails
         networkButton.isHidden = !needsNetworkDetails || !canDetectWiFiName
         refreshNetworkSummary()
         orientationRow.isHidden = remote || UIDevice.current.userInterfaceIdiom != .pad
         bluetoothSetupRow.isHidden = local || remote
         networkFields.enumerated().forEach { index, field in
-            field.isHidden = ((local || remote) && index < 2) || (remote && index == 6)
-                || (!needsNetworkDetails && ((2...5).contains(index) || index == 7))
+            field.isHidden = ((local || remote) && index < 2) || (remote && index == 5)
+                || (!needsNetworkDetails && (2...4).contains(index))
         }
         passwordStatus.isHidden = !needsNetworkDetails; forgetPasswordButton.isHidden = !needsNetworkDetails
         startButton.isEnabled = identity != nil
@@ -567,19 +793,26 @@ final class ReceiverViewController: UIViewController, CLLocationManagerDelegate 
         networkButton.isEnabled = value
         bluetoothSetupSwitch.isEnabled = value
         forgetPasswordButton.isEnabled = value
+        modeCards.forEach { $0.isEnabled = value }
     }
     @objc private func foregrounded() {
         guard !running else { return }
         ipField.text = ReceiverConfiguration.personalHotspotAddress() ?? ReceiverConfiguration.localIPv4Addresses().first
         modeChanged()
+        if browserStandbySwitch.isOn { webDisplay.start() }
     }
-    @objc private func backgrounded() { if running { stop() }; receiverBrowser.stop() }
+    @objc private func backgrounded() {
+        if running { stop() }
+        webDisplay.stop(); webURL = nil; webAddress.isHidden = true; copyWebAddressButton.isHidden = true
+        receiverBrowser.stop()
+    }
     @objc private func copyLog() { UIPasteboard.general.string = lines.joined(separator: "\n") }
+    @objc private func copyWebAddress() { UIPasteboard.general.string = webURL }
     private func log(_ message: String) {
         let timestamp = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .medium)
         lines.append("\(timestamp)  \(message)"); if lines.count > 200 { lines.removeFirst(lines.count - 200) }
-        if diagnosticsStack != nil, !diagnosticsStack.isHidden, settingsVisible { logView.text = lines.joined(separator: "\n") }
-        if diagnosticsStack != nil, !diagnosticsStack.isHidden, settingsVisible, !logView.text.isEmpty { logView.scrollRangeToVisible(NSRange(location: logView.text.utf16.count - 1, length: 1)) }
+        if activeTab == 2 { logView.text = lines.joined(separator: "\n") }
+        if activeTab == 2, !logView.text.isEmpty { logView.scrollRangeToVisible(NSRange(location: logView.text.utf16.count - 1, length: 1)) }
         NSLog("[TDSCarKit] %@", message)
     }
 }

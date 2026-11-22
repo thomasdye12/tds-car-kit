@@ -2,6 +2,7 @@
 // Native event/video session adapted from PlayPort's AirPlaySession and media engine.
 import Foundation
 import CryptoKit
+import AVFoundation
 
 final class CarPlayMediaSession {
     private let queue: DispatchQueue
@@ -21,6 +22,7 @@ final class CarPlayMediaSession {
     private var videoPackets = 0
     var onLog: ((String) -> Void)?
     var onVideo: ((Data) -> Void)?
+    var onPCM: ((AVAudioPCMBuffer) -> Void)?
     init(queue: DispatchQueue, secret: SymmetricKey, peerAddress: String, audioEnabled: Bool) {
         self.queue = queue; self.secret = secret; self.peerAddress = peerAddress; self.audioEnabled = audioEnabled
     }
@@ -47,6 +49,7 @@ final class CarPlayMediaSession {
                     let output = try CarPlayAudio(queue: queue, secret: secret, peerAddress: peerAddress,
                         connectionID: connectionID.uint64Value, format: format, microphonePort: microphonePort)
                     output.onLog = { [weak self] in self?.onLog?($0) }
+                    output.onPCM = { [weak self] in self?.onPCM?($0) }
                     audio[type.intValue] = output
                     replies.append(["type": type, "dataPort": output.dataPort, "controlPort": output.controlPort,
                                     "streamConnectionID": connectionID])

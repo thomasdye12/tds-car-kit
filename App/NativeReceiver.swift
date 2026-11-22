@@ -1,5 +1,6 @@
 import Foundation
 import Network
+import AVFoundation
 
 /// All listener/session state is confined to queue. UI callbacks are always main-thread.
 final class NativeReceiver {
@@ -16,6 +17,7 @@ final class NativeReceiver {
     var onListening: ((UInt16) -> Void)?
     var onControlConnected: (() -> Void)?
     var onVideo: ((Data) -> Void)?
+    var onPCM: ((AVAudioPCMBuffer) -> Void)?
     var onFailure: (() -> Void)?
 
     func start(configuration: ReceiverConfiguration, identity: AccessoryIdentity, advertise: Bool = true) {
@@ -193,6 +195,7 @@ final class NativeReceiver {
                         defer { videoSlots.signal() }; self?.onVideo?(data)
                     }
                 }
+                media.onPCM = { [weak self] buffer in self?.onPCM?(buffer) }
                 state.media = media
             }
             return RTSPResponse(body: try state.media!.setup(request.body), contentType: "application/x-apple-binary-plist")

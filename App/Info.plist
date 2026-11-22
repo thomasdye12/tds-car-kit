@@ -30,8 +30,12 @@
 	</array>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>Receive CarPlay control and media from your iPhone on this network.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Read the connected Wi-Fi name for CarPlay setup. No location coordinates are collected.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Return microphone audio to the iPhone for Siri and calls.</string>
+	<key>TDSWiFiNameDetection</key>
+	<string>$(TDS_WIFI_NAME_DETECTION)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -60,9 +64,5 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Read the connected Wi-Fi name for CarPlay setup. No location coordinates are collected.</string>
-	<key>TDSWiFiNameDetection</key>
-	<string>$(TDS_WIFI_NAME_DETECTION)</string>
 </dict>
 </plist>
